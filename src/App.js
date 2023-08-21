@@ -1,12 +1,30 @@
+import styled from 'styled-components'
+
+import Hero from './components/Hero'
+import Card from "./components/Card";
+
+import { recipes } from './data/recipes'
+
+const StyledPageWrapper = styled.div`
+  font-family: 'Bitter';
+`
+
+const StyledCardWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+`
+
 function App() {
   return (
-    <div style={{ fontFamily: 'Bitter' }}>
-      <h1>Recipe Kit</h1>
-      <p>Discover culinary delights and explore a world of irresistible flavours</p>
-      <a href="https://example.com/recipes">Browse Recipes</a>
-      <a href="https://example.com/join">Join Our Cooking Community</a>
-      <img src="/images/hero.jpg" alt="herbs and bread on wooden board" />
-    </div>
+    <StyledPageWrapper>
+      <Hero />
+      <StyledCardWrapper>
+        {recipes.map((recipe) => {
+          return <Card key={recipe.key} recipe={recipe} />;
+        })}
+      </StyledCardWrapper>
+    </StyledPageWrapper>
   );
 }
 
